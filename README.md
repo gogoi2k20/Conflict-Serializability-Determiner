@@ -1,4 +1,4 @@
-# Conflict Serializabilty Determiner
+# Conflict Serializability Determiner
 
 <!-- ## Transactions in DBMS
 In Database Management System, the processes are called as transactions-> those will either be successful or be failure. -->
