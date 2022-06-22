@@ -49,6 +49,27 @@ In the actual algorithm we check if there is a cycle in the graph using Kahn's a
 if yes, then we print that the transaction is not conflict serializable
 else , we print that the transaction is conflict serializable
 
+## How to provide the input
+The input is in the form of a matrix of strings:
+Suppose, we are having a schedule containing 3 transactions: T1,T2 and T3. The schedule is given as: R<sub>1</sub>X,R<sub>3</sub>Z,W<sub>3</sub>Z,R<sub>2</sub>Y,R<sub>1</sub>Y,W<sub>2</sub>Y,W<sub>3</sub>X,W<sub>2</sub>Z,W<sub>1</sub>X;
+### Meaning
+R<sub>1</sub>X means that transaction T1 does read operation on the data value X in the first transaction operation of the schedule; the consecutive operations signifies context switching between different transactions, W<sub>3</sub>Z means transaction T3 does write operation on data value Z
+We need to provide the details in matrix form as under:
+## Matrix
+|RX| NULL | NULL|
+|:--|:----|:----|
+|NULL| NULL | RZ |
+|NULL| NULL | WZ |
+| NULL| RY| NULL|
+|RY |NULL |NULL|
+|NULL| WY| NULL|
+|NULL| NULL| WX|
+|NULL |WZ |NULL|
+|WX| NULL| NULL|
+
+The column no of the matrix signifies the (column no+1)<sup>th</sup> transaction and the row number signifies the operation no of the schedule. The RX in the first row, first column signifies that the transaction T1 does read operation on the data value X and it is the first operation of the schedule, likewise, the WZ in the third row third column signifies that the transaction T3 does write operation on the data value Z and it is the third transaction operation of the schedule. 
+<p>As, at an instant only one operation is allowed so when there is no operation fill the matrix with the string "NULL"</p>
+
          
        
 
